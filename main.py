@@ -5,6 +5,7 @@ from keras.datasets import mnist
 from keras import layers
 import matplotlib.pyplot as plt
 
+
 WIN = pygame.display.set_mode((28, 28))
 
 
@@ -33,10 +34,19 @@ def create_model():
                 optimizer=tf.keras.optimizers.Adam(),
                 metrics=["accuracy"])
     model.fit(X_train, y_train, epochs=10)
+    return model 
     
+def translate_colors(colors):
+    for i in range(len(colors)):
+        for j in range(len(colors[i])):
+            if colors[i][j] == 16777215:
+                colors[i][j] = 0
+            else:
+                colors[i][j] = 1
+    return colors
 
 def main():
-    create_model()
+    model = create_model()
     WIN.fill((255, 255, 255))
     pygame.display.update()
     while True:
@@ -46,7 +56,7 @@ def main():
                 exit()
 
         while pygame.mouse.get_pressed()[0]:
-            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 5)
+            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 1)
             pygame.display.update()
             pygame.event.pump()
 
@@ -55,7 +65,10 @@ def main():
             pygame.display.update()
 
         if pygame.key.get_pressed()[pygame.K_a]:
-            pass
+            matrix = pygame.surfarray.array2d(WIN)
+            correct_matrix = translate_colors(matrix).transpose()
+            ans = model.predict(correct_matrix.reshape(1, 28, 28, 1))
+            print(ans.argmax())
         
 
 
