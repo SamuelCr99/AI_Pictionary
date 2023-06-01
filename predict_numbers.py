@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 
-WIN = pygame.display.set_mode((28, 28))
+WIN = pygame.display.set_mode((800, 800))
 
 def translate_colors(colors):
     for i in range(len(colors)):
@@ -26,7 +26,12 @@ def main():
                 exit()
 
         while pygame.mouse.get_pressed()[0]:
-            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 1)
+            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 33)
+            pygame.display.update()
+            pygame.event.pump()
+
+        while pygame.mouse.get_pressed()[2]:
+            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 33)
             pygame.display.update()
             pygame.event.pump()
 
@@ -36,13 +41,13 @@ def main():
 
         if pygame.key.get_pressed()[pygame.K_a]:
             matrix = pygame.surfarray.array2d(WIN)
-            correct_matrix = translate_colors(matrix)
-            # image = np.expand_dims(correct_matrix, axis=-1).astype(np.float32)
-            # correct_matrix = cv2.resize(image, (28, 28))
-            # resized_matrix = np.squeeze(correct_matrix)
+            correct_matrix = translate_colors(matrix).transpose()
+            image = np.expand_dims(correct_matrix, axis=-1).astype(np.float32)
+            correct_matrix = cv2.resize(image, (28, 28))
+            resized_matrix = np.squeeze(correct_matrix)
 
             # ans = model.predict(resized_matrix.reshape(1, 28, 28, 1))
-            ans = model.predict(correct_matrix.reshape(1, 28, 28, 1))
+            ans = model.predict(resized_matrix.reshape(1, 28, 28, 1))
             print(ans.argmax())
         
 
