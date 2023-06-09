@@ -43,11 +43,8 @@ def main():
             matrix = pygame.surfarray.array2d(WIN)
             correct_matrix = translate_colors(matrix).transpose()
             image = np.expand_dims(correct_matrix, axis=-1).astype(np.float32)
-            correct_matrix = cv2.resize(image, (28, 28))
-            resized_matrix = np.squeeze(correct_matrix)
-
-            # ans = model.predict(resized_matrix.reshape(1, 28, 28, 1))
-            ans = model.predict(resized_matrix.reshape(1, 28, 28, 1))
+            scaled_image = cv2.resize(image, (28, 28))
+            ans = model.predict(scaled_image.reshape(1, 28, 28, 1))
             print(ans.argmax())
         
 
