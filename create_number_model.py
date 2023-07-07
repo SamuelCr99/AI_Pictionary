@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 def create_model():
     (X_train, y_train), (X_test, y_test) = mnist.load_data()
+    print(X_train)
     X_train = X_train.reshape(X_train.shape + (1,))
     X_test = X_test.reshape(X_test.shape + (1,))
     X_train = X_train / 255.
