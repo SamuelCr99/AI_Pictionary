@@ -2,9 +2,10 @@ import pygame
 from tensorflow import keras
 import cv2
 import numpy as np
+import json
 
 
-WIN = pygame.display.set_mode((800, 800))
+WIN = pygame.display.set_mode((100,100))
 
 def translate_colors(colors):
     for i in range(len(colors)):
@@ -15,8 +16,17 @@ def translate_colors(colors):
                 colors[i][j] = 0
     return colors
 
+def find_key_from_value(d, value):
+    for k, v in d.items():
+        if v == value:
+            return k
+
 def main():
-    model = keras.models.load_model("digit-recognizer.h5")
+    model = keras.models.load_model("drawing_recognizer.h5")
+
+    with open('labels.json', 'r') as f:
+        labels = json.load(f)
+
     WIN.fill((255, 255, 255))
     pygame.display.update()
     while True:
@@ -26,12 +36,12 @@ def main():
                 exit()
 
         while pygame.mouse.get_pressed()[0]:
-            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 33)
+            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 1)
             pygame.display.update()
             pygame.event.pump()
 
         while pygame.mouse.get_pressed()[2]:
-            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 33)
+            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 1)
             pygame.display.update()
             pygame.event.pump()
 
@@ -43,9 +53,9 @@ def main():
             matrix = pygame.surfarray.array2d(WIN)
             correct_matrix = translate_colors(matrix).transpose()
             image = np.expand_dims(correct_matrix, axis=-1).astype(np.float32)
-            scaled_image = cv2.resize(image, (28, 28))
-            ans = model.predict(scaled_image.reshape(1, 28, 28, 1))
-            print(ans.argmax())
+            # scaled_image = cv2.resize(image, (50, 50))
+            ans = model.predict(image.reshape(1, 100, 100, 1))
+            print(find_key_from_value(labels, ans.argmax()))
         
 
 
