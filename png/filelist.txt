@@ -34,7 +34,6 @@ airplane/39.png
 airplane/4.png
 airplane/40.png
 airplane/41.png
-airplane/42.png
 airplane/43.png
 airplane/44.png
 airplane/45.png
