@@ -36,12 +36,12 @@ def main():
                 exit()
 
         while pygame.mouse.get_pressed()[0]:
-            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 5)
+            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 8)
             pygame.display.update()
             pygame.event.pump()
 
         while pygame.mouse.get_pressed()[2]:
-            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 5)
+            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 8)
             pygame.display.update()
             pygame.event.pump()
 
@@ -52,6 +52,7 @@ def main():
         if pygame.key.get_pressed()[pygame.K_a]:
             matrix = pygame.surfarray.array2d(WIN)
             correct_matrix = translate_colors(matrix).transpose()
+            print(correct_matrix)
             image = np.expand_dims(correct_matrix, axis=-1).astype(np.float32)
             image = cv2.resize(image, (100, 100))
             ans = model.predict(image.reshape(1, 100, 100, 1))

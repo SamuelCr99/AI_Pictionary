@@ -58,16 +58,15 @@ def main():
         layers.Conv2D(128, (3, 3), activation='relu'),
         layers.MaxPooling2D((2, 2)),
         layers.Flatten(),
-        layers.Dense(256, activation='relu'),
-        layers.Dropout(0.2),
-        layers.Dense(63, activation='softmax')
+        layers.Dense(128, activation='relu'),
+        layers.Dense(250, activation='softmax')
     ])
 
     model.compile(loss="sparse_categorical_crossentropy", 
                 optimizer=tf.keras.optimizers.Adam(),
                 metrics=["accuracy"])
 
-    model.fit(X_train, y_train, epochs=20, batch_size=10, validation_data=(X_test, y_test))
+    model.fit(X_train, y_train, epochs=5, batch_size=1)
 
     model.save("drawing_recognizer.h5")
 
