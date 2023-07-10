@@ -1,0 +1,50 @@
+arm
+bush
+armchair
+barn
+baseball bat
+cell phone
+bowl
+bread
+book
+basket
+bus
+bee
+carrot
+cat
+binoculars
+ashtray
+bookshelf
+bottle opener
+camel
+apple
+ant
+alarm clock
+bench
+airplane
+backpack
+bulldozer
+butterfly
+bell
+cake
+axe
+bear (animal)
+candle
+castle
+bathtub
+blimp
+cabinet
+car (sedan)
+canoe
+angel
+banana
+bed
+boomerang
+beer-mug
+brain
+calculator
+bridge
+cactus
+bicycle
+camera
+cannon

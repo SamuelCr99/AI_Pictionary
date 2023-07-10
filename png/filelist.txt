@@ -34,6 +34,7 @@ airplane/39.png
 airplane/4.png
 airplane/40.png
 airplane/41.png
+airplane/42.png
 airplane/43.png
 airplane/44.png
 airplane/45.png
@@ -4877,86 +4878,86 @@ crab/4877.png
 crab/4878.png
 crab/4879.png
 crab/4880.png
-crane (machine)/4881.png
-crane (machine)/4882.png
-crane (machine)/4883.png
-crane (machine)/4884.png
-crane (machine)/4885.png
-crane (machine)/4886.png
-crane (machine)/4887.png
-crane (machine)/4888.png
-crane (machine)/4889.png
-crane (machine)/4890.png
-crane (machine)/4891.png
-crane (machine)/4892.png
-crane (machine)/4893.png
-crane (machine)/4894.png
-crane (machine)/4895.png
-crane (machine)/4896.png
-crane (machine)/4897.png
-crane (machine)/4898.png
-crane (machine)/4899.png
-crane (machine)/4900.png
-crane (machine)/4901.png
-crane (machine)/4902.png
-crane (machine)/4903.png
-crane (machine)/4904.png
-crane (machine)/4905.png
-crane (machine)/4906.png
-crane (machine)/4907.png
-crane (machine)/4908.png
-crane (machine)/4909.png
-crane (machine)/4910.png
-crane (machine)/4911.png
-crane (machine)/4912.png
-crane (machine)/4913.png
-crane (machine)/4914.png
-crane (machine)/4915.png
-crane (machine)/4916.png
-crane (machine)/4917.png
-crane (machine)/4918.png
-crane (machine)/4919.png
-crane (machine)/4920.png
-crane (machine)/4921.png
-crane (machine)/4922.png
-crane (machine)/4923.png
-crane (machine)/4924.png
-crane (machine)/4925.png
-crane (machine)/4926.png
-crane (machine)/4927.png
-crane (machine)/4928.png
-crane (machine)/4929.png
-crane (machine)/4930.png
-crane (machine)/4931.png
-crane (machine)/4932.png
-crane (machine)/4933.png
-crane (machine)/4934.png
-crane (machine)/4935.png
-crane (machine)/4936.png
-crane (machine)/4937.png
-crane (machine)/4938.png
-crane (machine)/4939.png
-crane (machine)/4940.png
-crane (machine)/4941.png
-crane (machine)/4942.png
-crane (machine)/4943.png
-crane (machine)/4944.png
-crane (machine)/4945.png
-crane (machine)/4946.png
-crane (machine)/4947.png
-crane (machine)/4948.png
-crane (machine)/4949.png
-crane (machine)/4950.png
-crane (machine)/4951.png
-crane (machine)/4952.png
-crane (machine)/4953.png
-crane (machine)/4954.png
-crane (machine)/4955.png
-crane (machine)/4956.png
-crane (machine)/4957.png
-crane (machine)/4958.png
-crane (machine)/4959.png
-crane (machine)/4960.png
+crane/4881.png
+crane/4882.png
+crane/4883.png
+crane/4884.png
+crane/4885.png
+crane/4886.png
+crane/4887.png
+crane/4888.png
+crane/4889.png
+crane/4890.png
+crane/4891.png
+crane/4892.png
+crane/4893.png
+crane/4894.png
+crane/4895.png
+crane/4896.png
+crane/4897.png
+crane/4898.png
+crane/4899.png
+crane/4900.png
+crane/4901.png
+crane/4902.png
+crane/4903.png
+crane/4904.png
+crane/4905.png
+crane/4906.png
+crane/4907.png
+crane/4908.png
+crane/4909.png
+crane/4910.png
+crane/4911.png
+crane/4912.png
+crane/4913.png
+crane/4914.png
+crane/4915.png
+crane/4916.png
+crane/4917.png
+crane/4918.png
+crane/4919.png
+crane/4920.png
+crane/4921.png
+crane/4922.png
+crane/4923.png
+crane/4924.png
+crane/4925.png
+crane/4926.png
+crane/4927.png
+crane/4928.png
+crane/4929.png
+crane/4930.png
+crane/4931.png
+crane/4932.png
+crane/4933.png
+crane/4934.png
+crane/4935.png
+crane/4936.png
+crane/4937.png
+crane/4938.png
+crane/4939.png
+crane/4940.png
+crane/4941.png
+crane/4942.png
+crane/4943.png
+crane/4944.png
+crane/4945.png
+crane/4946.png
+crane/4947.png
+crane/4948.png
+crane/4949.png
+crane/4950.png
+crane/4951.png
+crane/4952.png
+crane/4953.png
+crane/4954.png
+crane/4955.png
+crane/4956.png
+crane/4957.png
+crane/4958.png
+crane/4959.png
+crane/4960.png
 crocodile/4961.png
 crocodile/4962.png
 crocodile/4963.png

@@ -11,7 +11,7 @@ def translate_colors(colors):
     for i in range(len(colors)):
         for j in range(len(colors[i])):
             if colors[i][j] == 16777215:
-                colors[i][j] = 255
+                colors[i][j] = 1
             else:
                 colors[i][j] = 0
     return colors
@@ -36,12 +36,12 @@ def main():
                 exit()
 
         while pygame.mouse.get_pressed()[0]:
-            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 8)
+            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 4)
             pygame.display.update()
             pygame.event.pump()
 
         while pygame.mouse.get_pressed()[2]:
-            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 8)
+            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 4)
             pygame.display.update()
             pygame.event.pump()
 
