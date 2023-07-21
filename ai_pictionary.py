@@ -6,6 +6,7 @@ import json
 import matplotlib.pyplot as plt
 import random
 import time
+import copy
 
 
 WIN = pygame.display.set_mode((800,900))
@@ -33,12 +34,12 @@ def main():
 
         while pygame.mouse.get_pressed()[0]:
             # Draw a rect around the mouse
-            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 13)
+            pygame.draw.circle(WIN, (0, 0, 0), pygame.mouse.get_pos(), 17)
             pygame.display.update()
             pygame.event.pump()
 
         while pygame.mouse.get_pressed()[2]:
-            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 13)
+            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 17)
             pygame.display.update()
             pygame.event.pump()
 
@@ -57,9 +58,19 @@ def main():
             image = abs((image - 16777215.) / 16777215.)
 
             image = cv2.resize(image, (28, 28))
+            plt.imshow(image)
+            plt.show()
 
             ans = model.predict(image.reshape(1, 28, 28, 1))
-            guess = data[str(ans.argmax())]
+            data_copy = copy.deepcopy(data)
+            guess = data_copy[str(ans.argmax())]
+            data_copy.pop(guess)
+            print(f'My guess is: {guess}')
+            guess = data_copy[str(ans.argmax())]
+            data_copy.pop(guess)
+            print(f'My guess is: {guess}')
+            guess = data_copy[str(ans.argmax())]
+            data_copy.pop(guess)
             print(f'My guess is: {guess}')
             if guess == item_to_draw: 
                 print('Correct!')
