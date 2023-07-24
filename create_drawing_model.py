@@ -8,9 +8,7 @@ from keras import layers
 from sklearn.model_selection import train_test_split
 
 
-
-
-x = [] 
+x = []
 y = []
 
 dict = {}
@@ -25,9 +23,9 @@ for bit_map in os.listdir('data'):
         y.append(c)
 
 
-
 # Split x and y into train and test
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.2, random_state=42)
 X_train = np.array(X_train)
 X_test = np.array(X_test)
 y_train = np.array(y_train)
@@ -45,19 +43,19 @@ y_train = y_train.astype('uint8')
 y_test = y_test.astype('uint8')
 
 model = tf.keras.models.Sequential()
-model.add(layers.Conv2D(10,(3,3), activation='relu', input_shape=(28,28,1)))
-model.add(layers.MaxPooling2D((2,2)))
-model.add(layers.Conv2D(20,(3,3), activation='relu'))
-model.add(layers.MaxPooling2D((2,2)))
-model.add(layers.Conv2D(20,(3,3), activation='relu'))
+model.add(layers.Conv2D(10, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(20, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(20, (3, 3), activation='relu'))
 model.add(layers.Flatten())
-model.add(layers.Dense(20,activation='relu'))
+model.add(layers.Dense(20, activation='relu'))
 model.add(layers.Dense(c+1, activation='softmax'))
 
 
-model.compile(loss="sparse_categorical_crossentropy", 
-            optimizer=tf.keras.optimizers.Adam(),
-            metrics=["accuracy"])
+model.compile(loss="sparse_categorical_crossentropy",
+              optimizer=tf.keras.optimizers.Adam(),
+              metrics=["accuracy"])
 model.fit(X_train, y_train, epochs=4, validation_data=(X_test, y_test))
 
 test_loss, test_acc = model.evaluate(X_test, y_test)

@@ -11,19 +11,19 @@ import pygame_widgets
 from pygame_widgets.button import Button
 
 
-WIN = pygame.display.set_mode((800,930))
+WIN = pygame.display.set_mode((800, 930))
 
 
 # Colors
-BLACK = ((0,0,0))
-WHITE = ((255,255,255))
+BLACK = ((0, 0, 0))
+WHITE = ((255, 255, 255))
 GREEN = ((0, 255, 0))
 
 item_to_draw = ""
 
+
 def predict(data, model, r):
     global item_to_draw
-
 
     matrix = pygame.surfarray.array2d(WIN)
     matrix = matrix[:, 50:850]
@@ -45,18 +45,19 @@ def predict(data, model, r):
     print(f'My second guess is: {guess2}')
     print(f'My third guess is: {guess3}')
 
-    if item_to_draw in [guess1, guess2, guess3]: 
+    if item_to_draw in [guess1, guess2, guess3]:
         print('Correct!')
-        WIN.fill(WIN , r)
-        item_to_draw = list(data.values())[random.randint(0,len(data)-1)]
+        WIN.fill(WIN, r)
+        item_to_draw = list(data.values())[random.randint(0, len(data)-1)]
 
     else:
         print('Hmm incorrect, try again!')
 
+
 def new_object(data, win, draw_window_rect, text_rect):
     global item_to_draw
 
-    item_to_draw = list(data.values())[random.randint(0,len(data)-1)]
+    item_to_draw = list(data.values())[random.randint(0, len(data)-1)]
     win.fill(WHITE, draw_window_rect)
     win.fill(WHITE, text_rect)
 
@@ -66,18 +67,19 @@ def main():
     pygame.init()
     font = pygame.font.SysFont('Arial', 30)
     model = keras.models.load_model("drawing_recognizer.h5")
-    model.predict(np.zeros((1, 28, 28, 1))) # For some reason the first predict is slow. 
-                                            # So this is run so all future predicts are quick
+    # For some reason the first predict is slow.
+    model.predict(np.zeros((1, 28, 28, 1)))
+    # So this is run so all future predicts are quick
     # Read the json file
     with open('num_to_image_dict.json', 'r') as f:
         data = json.load(f)
 
     draw_window_rect = pygame.Rect(0, 50, 800, 800)
-    text_rect = pygame.Rect(0,0, 800, 30 )
+    text_rect = pygame.Rect(0, 0, 800, 30)
 
     WIN.fill((255, 255, 255))
     pygame.display.update()
-    item_to_draw = list(data.values())[random.randint(0,len(data)-1)]
+    item_to_draw = list(data.values())[random.randint(0, len(data)-1)]
 
     while True:
         events = pygame.event.get()
@@ -96,7 +98,8 @@ def main():
             pygame.event.pump()
 
         while pygame.mouse.get_pressed()[2]:
-            pygame.draw.circle(WIN, (255, 255, 255), pygame.mouse.get_pos(), 17)
+            pygame.draw.circle(WIN, (255, 255, 255),
+                               pygame.mouse.get_pos(), 17)
             pygame.display.update()
             pygame.event.pump()
 
@@ -108,13 +111,15 @@ def main():
         pygame.draw.rect(WIN, BLACK, upper_line)
         pygame.draw.rect(WIN, BLACK, lower_line)
 
-        Button(WIN, 690, 875, 100, 50, text="Predict", inactiveColour = GREEN, onClick = lambda: predict(data, model, draw_window_rect)) 
-        Button(WIN, 580, 875, 100, 50, text="Clear Image", onClick = lambda: WIN.fill(WHITE, draw_window_rect)) 
-        Button(WIN, 470, 875, 100, 50, text="New Object", onClick = lambda: new_object(data, WIN, draw_window_rect, text_rect)) 
+        Button(WIN, 690, 875, 100, 50, text="Predict", inactiveColour=GREEN,
+               onClick=lambda: predict(data, model, draw_window_rect))
+        Button(WIN, 580, 875, 100, 50, text="Clear Image",
+               onClick=lambda: WIN.fill(WHITE, draw_window_rect))
+        Button(WIN, 470, 875, 100, 50, text="New Object", onClick=lambda: new_object(
+            data, WIN, draw_window_rect, text_rect))
 
-        pygame_widgets.update(events)  
+        pygame_widgets.update(events)
         pygame.display.update()
-        
 
 
 if __name__ == '__main__':
