@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 
 export default function Canvas() {
   const [mouseDown, setMouseDown] = useState(false);
@@ -18,7 +18,6 @@ export default function Canvas() {
         ctx.lineTo(currentX, currentY);
         ctx.stroke();
         ctx.closePath();
-        // console.log(ctx.getImageData(0, 0, 800, 800));
       }
 
       setPrevPos({ x: currentX, y: currentY });
@@ -50,13 +49,9 @@ export default function Canvas() {
       <button
         onClick={() => {
           const canvas = document.getElementById("myCanvas");
-          const ctx = canvas.getContext("2d");
-
-          // // Create a new 28x28 canvas
           var smallCanvas = document.getElementById("smallCanvas");
           var smallCtx = smallCanvas.getContext("2d");
 
-          // Draw the original canvas onto the 28x28 canvas (scaling down)
           smallCtx.drawImage(
             canvas,
             0,
@@ -73,8 +68,11 @@ export default function Canvas() {
             smallCanvas.height,
           );
           var smallData = smallImageData.data;
-          console.log(smallData)
-
+          var smallDataArray = [];
+          // Create new array but only with black val
+          for (var i = 3; i < smallData.length; i += 4) {
+            smallDataArray.push(smallData[i] ? 1 : 0);
+          }
         }}
       />
     </>
